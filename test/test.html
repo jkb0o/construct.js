@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script type="text/javascript" src="./construct.js"></script>
+    <script type="text/javascript">
+        /* define some structs */
+        with ( construct ){
+            struct = Struct("attempt_1",
+                UBInt8("Age"),
+                SBInt16("Hairs"),
+                UBInt32("Weight")
+            )
+        }
+
+
+        result = struct.parse('\x01\x00\x0f\x00\x00\x00\xff')
+        console.log(result)
+        /* output:
+
+            Object >
+                Age: 1
+                Hairs: 12833
+                Weight: 255
+        */
+    </script>
+</head>
+<body>
+</body>
+<html>
