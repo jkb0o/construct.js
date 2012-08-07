@@ -28,19 +28,15 @@ Usage
         struct = Struct("attempt_1",
             UBInt8("Age"),
             SBInt16("Hairs"),
-            UBInt32("Weight")
+            UBInt32("Weight"),
+            Struct("prefs",
+                UBInt8("a"),
+                UBInt8("b")
+            )
         )
     }
 
-
-    result = struct.parse('\x01\x00\x0f\x00\x00\x00\xff')
+    result = struct.parse('\x01\x32\x21\x00\x00\x00\xff\x01\x02')
     console.log(result)
-    /* output:
 
-        Object >
-            Age: 1
-            Hairs: 15
-            Weight: 255
-    */
-
-
+    //> { Age: 1, Hairs: 12833, Weight: 255, prefs: { a: 1, b: 2 } }
